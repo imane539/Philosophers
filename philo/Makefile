@@ -1,7 +1,9 @@
-CFLAGS = -Wall -Werror -Wextra #-fsanitize=address -g3 
+CFLAGS = -Wall -Werror -Wextra #-g3 -fsanitize=address -g3 
 
 SRC = philo.c \
-utils.c
+utils.c \
+monitor.c \
+philo_manager.c
 
 OBJECTS = $(SRC:.c=.o)
 

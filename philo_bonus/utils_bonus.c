@@ -1,18 +1,7 @@
-#include "philo.h"
+#include "philo_bonus.h"
 
-void	init_forks_order(t_philo *philo)
-{
-	if (philo->id % 2 == 0)
-	{
-		philo->first_fork = philo->id;
-		philo->second_fork = (philo->id + 1) % philo->shared_data->nb_philos;
-	}
-	else
-	{
-		philo->first_fork = (philo->id + 1) % philo->shared_data->nb_philos;
-		philo->second_fork = philo->id;
-	}
-}
+
+
 
 long	get_current_time(void)
 {
@@ -93,4 +82,32 @@ int	*check_argument(int ac, char **av)
 		i++;
 	}
 	return (num);
+}
+char	*ft_strjoin(char *s1, char *s2)
+{
+	char	*p;
+	size_t	size;
+	size_t	i;
+	int		j;
+
+	j = 0;
+	i = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	p = malloc(size);
+	if (!p)
+		return (NULL);
+	while (i < size - 1)
+	{
+		while (s1[i])
+		{
+			p[i] = s1[i];
+			i++;
+		}
+		while (s2[j])
+			p[i++] = s2[j++];
+	}
+	p[i] = '\0';
+	return (p);
 }
